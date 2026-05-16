@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>lista de tareas</h1>
-    <ul>
-        {% for to_do in task_list %}
-            <li>{{ to_do.title }} - {{ to_do.created_at }}</li>
+{% extends '_base.html' %}
+
+{% block content %}
+   <ul>
+   {% for to_do in task_list %}
+            <li><a href="{% url 'task_detail' to_do.pk %}">{{ to_do.title }}</a> - {{ to_do.created_at }}</li>
         {% endfor %}
-    </ul>
-</body>
-</html>
+   </ul>
+{% endblock content %}
